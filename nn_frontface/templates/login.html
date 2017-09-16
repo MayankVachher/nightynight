@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>SPLIIIT</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom_login.css') }}?t={{t}}">
+</head>
+<body>
+
+	<div class="nav-container">
+		<nav class="navbar container">
+
+			<div class="navbar-brand">
+				<a class="navbar-item" href="#">
+					<h1 class="title app-name">SPLIIIT</h1>
+				</a>
+			</div>
+
+			<span class="nav-toggle">
+				<span></span>
+				<span></span>
+				<span></span>
+			</span>
+
+			<div class="navbar-menu">
+
+				<div class="navbar-end">
+
+					<div class="navbar-item">
+						<div class="field is-grouped">
+							<p class="control">
+								<a class="button is-info" href="{{ url_for('login_google') }}">
+									<span>Log in</span>
+								</a>
+							</p>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</nav>
+	</div>
+
+	<div class="container login-desc">
+	</div>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="content has-text-centered">
+				<p>
+					<span class="app-name">SPLIIIT</span> by <a href="http://jgthms.com">Mayank Vachher</a>. The source code is licensed
+					<a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+					is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+				</p>
+
+				<p>
+					<a class="icon" href="https://github.com/jgthms/bulma">
+						<i class="fa fa-github"></i>
+					</a>
+				</p>
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>

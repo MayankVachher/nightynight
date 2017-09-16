@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>SPLIIIT</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom_base.css') }}?t={{t}}">
+
+	{% block customCSS %}{% endblock %}
+</head>
+
+<body>
+
+	{% include 'nav.html' %}
+
+	<div class="container app-content">
+		{% block content %}{% endblock %}
+	</div>
+
+	{% include 'footer.html' %}
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/nav.js') }}?t={{t}}"></script>
+	{% block customJS %}{% endblock %}
+
+</body>
+</html>

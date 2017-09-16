@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block customCSS %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom_createGroup.css') }}?t={{t}}">
+{% endblock %}
+
+{% block customJS %}
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/group_create.js') }}?t={{t}}"></script>
+{% endblock %}
+
+{% block content %}
+
+<h1 class="title is-2">Create a group</h1>
+
+<div class="columns">
+
+	<div class="column is-three-quarter">
+
+		<form>
+
+			<div class="field is-horizontal">
+
+				<div class="field-label is-normal">
+					<label class="label">Group Name</label>
+				</div>
+
+				<div class="field-body">
+					<div class="field">
+						<div class="control">
+							<input class="input is-danger" type="text" placeholder="e.g. College Group or Family">
+						</div>
+						<p class="help is-danger">
+							This field is required
+						</p>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="field is-horizontal">
+
+				<div class="field-label is-normal">
+					<label class="label">Description</label>
+					<small>(if any)</small>
+				</div>
+
+				<div class="field-body">
+					<div class="field">
+						<div class="control">
+							<textarea class="textarea" placeholder="eg. People I go to class with or People I live with"></textarea>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="field is-horizontal">
+				<div class="field-label">
+					<label class="label">Group Members</label>
+				</div>
+
+				<div class="field-body">
+					<div class="field">
+						<div class="control">
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="field is-horizontal">
+				<div class="field-label">
+				</div>
+
+				<div class="field-body">
+					<div class="field is-grouped">
+						<p class="control is-expanded">
+							<input class="input" type="text" placeholder="Add by email" id="searchPeople">
+						</p>
+						<p class="control">
+							<a class="button is-info">
+								Add
+							</a>
+						</p>
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="field is-horizontal">
+				<div class="field-label">
+				</div>
+
+				<div class="field-body columns">
+						<div class="columns column is-12 is-multiline">
+							<div class="column is-3">
+								<div class="box">
+									<div class="has-text-centered">
+										<img class="member_photo" src="{{ user_data.picture }}">
+										<p class="member-name">{{ user_data.name }}</p>
+										<p class="member-email">{{ user_data.email }}</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="column is-3">
+								<div class="box">
+									<div class="has-text-centered">
+										<a class="delete is-pulled-right"></a>
+										<img class="member_photo" src="{{ user_data.picture }}">
+										<p class="member-name">{{ user_data.name }}</p>
+										<p class="member-email">{{ user_data.email }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+				</div>
+
+			</div>
+
+			<div class="field is-horizontal">
+				<div class="field-label">
+				</div>
+
+				<div class="field-body">
+					<div class="field">
+						<div class="control">
+							<button class="button is-primary">
+								Create Group
+							</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</form>
+
+	</div>
+
+</div>
+
+{% endblock %}

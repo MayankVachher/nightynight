@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>SPLIIIT</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}?t={{t}}">
+</head>
+<body>
+	<section class="hero {% block hero_color %}{% endblock %} is-fullheight">
+		<div class="hero-head">
+			<div class="container">
+				<header class="nav">
+					<div class="container">
+						<div class="nav-left">
+							<a class="nav-item">
+								<img src="{{ url_for('static', filename='imgs/bulma.png') }}" alt="Guardian">
+							</a>
+						</div>
+
+						<span class="nav-toggle">
+							<span></span>
+							<span></span>
+							<span></span>
+						</span>
+
+						<div class="nav-right nav-menu">
+							<a class="nav-item {% block home_active %}{% endblock %}" href="{{ url_for('home') }}">Home</a>
+							<a class="nav-item {% block admin_active %}{% endblock %}" href="{{ url_for('admin') }}">Admin</a>
+
+							<span class="nav-item">
+								<img src="{% block user_nav_photo %}{% endblock %}" id="user_nav_photo">
+							</span>
+
+							<a class="nav-item" href="{{ url_for('logout') }}">Sign out</a>
+
+						</div>
+					</div>
+				</header>
+			</div>
+		</div>
+
+		<div class="hero-body">
+			<div class="container has-text-centered">
+				<h1 class="title">
+					{% block location_title %}{% endblock %}
+				</h1>
+
+				<h2 class="subtitle">
+					{% block location_desc %}{% endblock %}
+				</h2>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>

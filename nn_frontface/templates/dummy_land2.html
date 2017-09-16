@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block customCSS %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom_createGroup.css') }}?t={{t}}">
+{% endblock %}
+
+{% block customJS %}
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/group_create.js') }}?t={{t}}"></script>
+{% endblock %}
+
+{% block content %}
+
+<h1 class="title is-2">Add Friends</h1>
+
+<div class="columns">
+
+	<div class="column is-three-quarters is-offset-1 columns is-multiline">
+
+		<div class="column is-12">
+			<h1 class="title is-3">Invite People</h1>
+			<form>
+
+				<div class="field has-addons">
+					<label class="label">Email</label>
+					<div class="control has-icons-left">
+						<input class="input" type="text" placeholder="Email input" value="Friend's Email ID">
+						<span class="icon is-small is-left">
+							<i class="fa fa-envelope"></i>
+						</span>
+						<span class="icon is-small is-right">
+							<i class="fa fa-warning"></i>
+						</span>
+					</div>
+					<p class="control">
+						<span class="select">
+							<select>
+								<option>gmail.com</option>
+								<option>iiitd.ac.in</option>
+							</select>
+						</span>
+					</p>
+				</div>
+
+			</form>
+		</div>
+
+	</div>
+
+</div>
+
+{% endblock %}

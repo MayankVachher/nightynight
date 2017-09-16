@@ -1,0 +1,16 @@
+.member-name {
+	font-size: 1rem;
+	font-weight: 700;
+}
+
+.member-email {
+	font-size: 0.85rem;
+}
+
+.member_photo {
+	border-radius: 50%;
+	height: 4rem;
+	width: 4rem;
+	object-fit: cover;
+	max-height: none;
+}

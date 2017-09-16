@@ -1,0 +1,82 @@
+<div class="nav-container">
+	<nav class="navbar container" id="top">
+
+		<div class="navbar-brand">
+			<a class="navbar-item" href="#">
+				<h1 class="title app-name">SPLIIIT</h1>
+			</a>
+		</div>
+
+		<span class="nav-toggle">
+			<span></span>
+			<span></span>
+			<span></span>
+		</span>
+
+		<div class="navbar-menu">
+
+			<div class="navbar-end">
+
+				<a class="navbar-item">
+					Home
+				</a>
+
+				<a class="navbar-item">
+					Outings
+				</a>
+
+				<a class="navbar-item">
+					People
+				</a>
+
+				<a class="navbar-item">
+					Summary
+				</a>
+
+				<div class="navbar-item has-dropdown">
+
+					<div class="navbar-link" id="user_settings_dropdown_trigger">
+						<img src="{{ user_data.picture }}" id="user_nav_photo">
+					</div>
+
+					<div class="navbar-dropdown navbar-dropdown-startRight is-boxed">
+
+
+						<div class="navbar-item" id="user_intro_settings_dropdown">
+							<p>
+								<small>Hello,</small>
+								<br>
+								<strong>{{ user_data.name }}</strong>
+							</p>
+						</div>
+
+						<hr class="navbar-divider">
+
+						<a class="navbar-item">
+							Your Profile
+						</a>
+
+						<a class="navbar-item">
+							Help
+						</a>
+
+						<hr class="navbar-divider">
+
+						<a class="navbar-item">
+							Settings
+						</a>
+
+						<a class="navbar-item" href="{{ url_for('logout') }}">
+							Log out
+						</a>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</nav>
+</div>

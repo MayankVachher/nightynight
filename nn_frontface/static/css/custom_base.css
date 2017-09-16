@@ -1,0 +1,39 @@
+.app-name {
+	font-family: 'Fjalla One', sans-serif;
+}
+
+html {
+	background-color: #fff;
+}
+
+body {
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+.container.app-content {
+	min-height: 60vh;
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+.nav-container {
+	background-color: #fff;
+	position: fixed !important; top: 0; left: 0; right: 0;
+	z-index: 100;
+}
+
+footer {
+	background-color: #dddddd !important;
+}
+
+#user_nav_photo {
+	border-radius: 50%;
+	height: 2.25rem;
+	width: 2.25rem;
+	object-fit: cover;
+	max-height: none;
+}
+
+#user_settings_dropdown_trigger {
+	cursor:pointer;
+}
