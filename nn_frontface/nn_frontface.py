@@ -141,6 +141,10 @@ def render_login_page():
 	return render_template('login.html',
 		t=randint(1,9999))
 
+def render_doc_signup_page():
+	return render_template("doc_signup.html",
+		t=randint(1,9999))
+
 def get_user_data(datastore):
 	details = dict()
 
@@ -160,9 +164,21 @@ def get_user_data(datastore):
 
 ###################################
 
-# Endpoints Section
+# Endpoints for Doctor Section
 
 ###################################
+
+@app.route('/whats_up_doc')
+def doctor_sign_up():
+	status = handle_auth()
+	if status['access_granted'] == False:
+		return render_doc_signup_page()
+
+	user_data = get_user_data(status['data'])
+
+	return render_template('doc_home.html',
+			t=randint(1,9999),
+			user_data=user_data)
 
 @app.route('/')
 def home():
@@ -208,8 +224,15 @@ def dummy():
 ###################################
 
 
+###################################
+
+# Endpoints for Patient Section
+
+###################################
 
 
+
+###################################
 
 ###################################
 
