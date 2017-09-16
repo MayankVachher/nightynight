@@ -2,9 +2,9 @@
 
 ## Project Details
 
-`Project Name: Nighty Night
-Built at: LumoHacks 2017
-Project Description: <Insert Fancy Project Description here>`
+> Project Name: Nighty Night
+> Built at: LumoHacks 2017
+> Project Description: <Insert Fancy Project Description here>
 
 ## Team Members
 
