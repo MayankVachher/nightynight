@@ -132,9 +132,22 @@ def history():
 
 	user_data = get_user_data(status['data'])
 
+	labels = ["Aug 30", "Aug 31", "Sep 1", "Sep 2", "Sep 3", "Sep 4", "Sep 5"]
+
+	TTB = [-2, -1.2, -3, -4.3, -2.3, -3.9, -1]
+	SST = [-1, -0.2, -2, -4, -1.3, -3, -0.5]
+	FW = [8, 7, 5, 5.8, 6, 9, 10]
+	TOB = [9, 8, 5.4, 6.3, 6.7, 9.5, 10]
+
+
 	return render_template('history.html',
 			t=randint(1,9999),
-			user_data=user_data)
+			user_data=user_data,
+			labels=labels,
+			TTB=repr(TTB),
+			SST=repr(SST),
+			FW=repr(FW),
+			TOB=repr(TOB))
 
 @app.route('/profile')
 def profile():
@@ -335,7 +348,7 @@ def page_not_found(e):
 ###################################
 
 def main():
-    app.run(port=5000)
+    app.run(port=5001)
 
 if __name__ == '__main__':
     main()
