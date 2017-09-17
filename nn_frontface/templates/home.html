@@ -93,16 +93,24 @@ input.cmn-toggle-round-flat:checked + label:after {
 	background-color: #f0f;
 }
 
-
-
+.tracker {
+	font-size:0.8em;
+	color:#aaa;
+}
+.btn-info {
+    background: #283c4c;
+    color: #ffffff;
+}
 </style>
 
-<!-- [TOP ROW] 2 COLUMNS ALIGNED RIGHT -->
+<div class="container-fluid">
+
+<!-- [TOP ROW] 2 COLUMNS ALIGNED RIGHT style="padding-left:20px;padding-top:5px" -->
 <div class="row bg-inverse text-white">
-	<div class="col-5" style="padding-left:20px;padding-top:5px">
-		<span class="tracker">Device status: recording</span>
+	<div class="col-5" >
+		<span class="tracker text-nowrap">Device status: recording</span>
 	</div>
-	<div class="col-7" style="padding-right:20px;padding-top:5px">
+	<div class="col-7" >
 		<figure class="figure w-100">
 		  <img src="{{ user_data.picture }}" id="user_nav_photo" class="figure-img img-fluid rounded" style="float:right">
 		  <figcaption class="figure-caption text-right" style="font-size:0.8em">
@@ -125,12 +133,16 @@ input.cmn-toggle-round-flat:checked + label:after {
 <!-- [MAIN CONTENT] ONE BIG COLUMN -->
 <div class="row bg-inverse text-white">
 <div class="col-12">
-<h2 class="text-center">Current Mode:</h2>
+<h2 class="text-center" style="padding:10px">Current Mode:</h2>
 
 <h3 id="sleep" class="text-center">I am up</h3>
 
 <div class="switch" >
 <p align="center">
+
+<img src="{{ url_for('static', filename='imgs/moon_circle2.png') }}"
+width="200px" height="200px"/>
+
   <input id="cmn-toggle-4" onclick="toggleSleep()" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
   <label for="cmn-toggle-4"></label>
 </p>
@@ -138,14 +150,36 @@ input.cmn-toggle-round-flat:checked + label:after {
 </div>
 </div>
 <div class="row bg-inverse text-white">
-<div class="col-8" style="padding-left:25px">
-<h5>Tonight's Sleep Plan</h4>
-	<ul>
-		<li>Go to bed by 10:00 pm</li>
-		<li>Wake up at 7:00 am</li>
-	</ul>
+<div class="col-2"></div>
+	<div class="col-8 text-center" style="padding:15px">
+		<h5>Tonight's Sleep Plan:</h4>
+		<span id="bedtime">
+		Go to bed by <b>10:00 pm</b>
+		</span>
+		<br>
+		Wake up at <b>7:00 am</b>
+	</div>
+<div class="col-2"></div>
 </div>
+<div class="row bg-inverse">
+	<div class="col-12 text-center" style="padding:20px">
+		<p>
+			<a href="/reports.html" class="btn btn-info" role="button">Sleep History</a>
+		</p>
+		<p>
+			<a href="/reports.html" class="btn btn-info" role="button">Settings</a>
+		</p>
+	</div>
 </div>
+<!-- <div class="row">
+<div class="col-12">
+</div>
+</div> -->
+
+</div><!-- end big container -->
+
+
+
 
 <script>
 
@@ -155,12 +189,10 @@ function toggleSleep() {
 	} else {
 		document.getElementById('sleep').innerHTML = 'Going to sleep';
 	}
+	document.getElementById('bedtime').style.textDecoration = 'line-through';
 }
 
 </script>
-
-
-<p></p>
 <!-- END [MAIN CONTENT] -->
 
 {% endblock %}
