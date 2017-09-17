@@ -1,21 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends "unsigned_base.html" %}
 
-	<title>nite2nite</title>
+{% block pageContent %}
 
-	<link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+<style>
+.container {
+	min-height: 94vh;
+}
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.min.css">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom_login.css') }}?t={{t}}">
-</head>
-<body>
-<p>not logged in greeting stuff here</p>
-<a class="button is-info" href="{{ url_for('login_google') }}">log IN</a>
+body {
+	background-color: #292b2c;
+}
+</style>
 
-</body>
-</html>
+<div class="row text-white bg-inverse">
+	<div class="col-12 text-white text-center">
+		<h2 class="text-white">Welcome to <br><b>nite2nite</b></br> Sleep Tracker</h2>
+		<p style="margin-top:10px">A sleep health tracker able to interface with medical diagnostic equipment provided by physicians, interactively making real changes in patient's quality of sleep.</p>
+		<a class="btn btn-primary" href="{{ url_for('login_google') }}" style="margin-top:15px">Log In</a>
+		<p style="margin-top:20px">New user? <a href="templates/unsigned_how_it_works.html">learn more</a></p>
+	</div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
