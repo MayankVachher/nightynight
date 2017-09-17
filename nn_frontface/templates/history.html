@@ -91,19 +91,19 @@ var myChart = new Chart(ctx, {
   data: {
     labels: [{% for label in labels %} "{{ label }}", {% endfor %}],
     datasets: [{
-      label: 'TTB',
+      label: 'Time to Bed (TTB)',
       data: {{ TTB }},
 	  borderColor: 'rgba(39, 174, 96, 0.5)'
     }, {
-      label: 'SST',
+      label: 'Start Sleeping at Time (SST)',
       data: {{ SST }},
       borderColor: 'rgba(39, 174, 96, 1.0)'
     }, {
-      label: 'FW',
+      label: 'Fully Awake (FW)',
       data: {{ FW }},
       borderColor: 'rgba(26, 188, 156, 1.0)'
     }, {
-      label: 'TOB',
+      label: 'Time Out of Bed (TOB)',
       data: {{ TOB }},
       borderColor: 'rgba(26, 188, 156, 0.5)'
     }]
@@ -112,15 +112,18 @@ var myChart = new Chart(ctx, {
 	  scales: {
 		  yAxes: [{
 			  ticks: {
-				  max: 15,
-				  min: -9,
-				  stepSize: 1,
+			  
+				  reverse: true, // should be going from Time to Bed -down- to Time Out of Bed
+				
+				  max: 10,// was max 15, min -9   this should probably scale with data, right?
+				  min: -5,
+				  stepSize: 3, // was 1
 				  callback: function(value, index, values) {
 					  	if (value < 0) {
-							return 24+value;
+							return 24+value+":00";
 						}
                         else {
-							return value;
+							return value+":00";
 						}
                     }
 			  }
@@ -129,6 +132,7 @@ var myChart = new Chart(ctx, {
   }
 
 });
+
 
 </script>
 

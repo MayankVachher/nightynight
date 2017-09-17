@@ -66,7 +66,7 @@ input.cmn-toggle-round-flat + label:after {
   left: 4px;
   bottom: 4px;
   width: 52px;
-  background-color: #f1c40f;
+  background-color: #fd9;
   -webkit-border-radius: 52px;
   -moz-border-radius: 52px;
   -ms-border-radius: 52px;
@@ -78,23 +78,25 @@ input.cmn-toggle-round-flat + label:after {
   transition: margin 0.4s, background 0.4s;
 }
 input.cmn-toggle-round-flat:checked + label {
-  background-color: #2196F3;
+  background-color: #0d30a3;
 }
 input.cmn-toggle-round-flat:checked + label:after {
   margin-left: 60px;
-  background-color: #2196F3;
+  background-color: #6660a3;
 }
 </style>
 
 <div class="row text-white">
 	<div class="col-12">
 		<!-- <h2 class="text-center" style="padding:10px">Current Mode:</h2> -->
-		<h3 id="sleep" class="text-center" style="padding:10px">I am up</h3>
+		<h3 id="sleep" class="text-center" style="padding-top:25px">I am up</h3>
 
 		<div class="switch">
 			<p align="center">
-				<img src="{{ url_for('static', filename='imgs/moon_circle2.png') }}" width="180px" height="180px"/>
-
+			
+				<img src="{{ url_for('static', filename='imgs/moon_circle2.png') }}" width="180px" id="moon-circle" height="180px"/>
+				<img src="{{ url_for('static', filename='imgs/sun_circle.png') }}" width="180px" id="sun-circle" height="180px"/>
+				
 				<input id="cmn-toggle-4" onclick="toggleSleep()" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
 				<label for="cmn-toggle-4"></label>
 			</p>
@@ -127,17 +129,36 @@ input.cmn-toggle-round-flat:checked + label:after {
 
 <script>
 
+//hide the moon real quick at first
+$('#moon-circle').hide();
+
 function toggleSleep() {
 	console.log();
+	
 	if(!$("#cmn-toggle-4").is(':checked')) {
 		// Is Awake
 		$('#sleep').html('I am up');
 		$('#bedtime').css("text-decoration", "none");
+		$('#moon-circle').hide();
+		$('#sun-circle').show(); 
+		show_prompt();
 	} else {
 		$('#sleep').html('Going to sleep');
 		$('#bedtime').css("text-decoration", "line-through");
+		$('#moon-circle').show();
+		$('#sun-circle').hide();
 	}
 }
+
+function show_prompt() {
+    var sleepTime;
+    do {
+        sleepTime=prompt("About what time did you fall asleep?");
+    }
+    while(sleepTime.length < 1); // process however we like, ie "2" could be assumed to mean "2:00 AM" depending on when entered.
+    $('#myinput').val(sleepTime);
+}
+
 
 </script>
 
