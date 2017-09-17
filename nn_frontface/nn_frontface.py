@@ -1,47 +1,11 @@
 from flask import Flask, redirect, url_for, session
-from flask import render_template
+from flask import render_template, abort
 from flask_oauth import OAuth
 
 from urllib2 import Request, urlopen, URLError
 
 import json
 from random import randint
-
-# from pymongo import MongoClient
-
-###################################
-
-# MongoDB Section
-
-###################################
-
-# client = MongoClient()
-#
-# spliiit_db = client['spliiit']
-#
-# user_info = spliiit_db['user_info']
-# event_info = spliiit_db['event_info']
-#
-# def addNewUser(user_details):
-# 	user_obj = dict()
-# 	user_obj['uid'] = user_details['uid']
-# 	user_obj['name'] = user_details['name']
-# 	user_obj['email'] = user_details['email']
-# 	user_obj['picture'] = user_details['picture']
-# 	user_obj['friends'] = list()
-# 	user_obj['events'] = list()
-#
-# 	user_info.insert_one(user_obj)
-#
-# def checkUserExists(uid):
-# 	if user_info.find_one({'uid': uid}) == None:
-# 		return False
-# 	return True
-
-###################################
-
-
-
 
 
 ###################################
@@ -141,10 +105,6 @@ def render_login_page():
 	return render_template('login.html',
 		t=randint(1,9999))
 
-def render_doc_signup_page():
-	return render_template("doc_signup.html",
-		t=randint(1,9999))
-
 def get_user_data(datastore):
 	details = dict()
 
@@ -158,27 +118,163 @@ def get_user_data(datastore):
 
 ###################################
 
+###################################
 
-
-
+# Endpoints for Patient Section
 
 ###################################
 
-# Endpoints for Doctor Section
-
-###################################
-
-@app.route('/whats_up_doc')
-def doctor_sign_up():
+@app.route('/history')
+def history():
 	status = handle_auth()
 	if status['access_granted'] == False:
-		return render_doc_signup_page()
+		return status['action_taken']
 
 	user_data = get_user_data(status['data'])
 
-	return render_template('doc_home.html',
+	return render_template('history.html',
 			t=randint(1,9999),
 			user_data=user_data)
+
+@app.route('/profile')
+def profile():
+	status = handle_auth()
+	if status['access_granted'] == False:
+		return status['action_taken']
+
+	user_data = get_user_data(status['data'])
+
+	return render_template('profile.html',
+			t=randint(1,9999),
+			user_data=user_data)
+
+@app.route('/profile/preferences')
+def profile_preferences():
+	status = handle_auth()
+	if status['access_granted'] == False:
+		return status['action_taken']
+
+	user_data = get_user_data(status['data'])
+
+	return render_template('profile_preferences.html',
+			t=randint(1,9999),
+			user_data=user_data)
+
+@app.route('/profile/devices')
+def profile_devices():
+	status = handle_auth()
+	if status['access_granted'] == False:
+		return status['action_taken']
+
+	user_data = get_user_data(status['data'])
+
+	return render_template('profile_devices.html',
+			t=randint(1,9999),
+			user_data=user_data)
+
+@app.route('/profile/assistance')
+def profile_assistance():
+	status = handle_auth()
+	if status['access_granted'] == False:
+		return status['action_taken']
+
+	user_data = get_user_data(status['data'])
+
+	return render_template('profile_assistance.html',
+			t=randint(1,9999),
+			user_data=user_data)
+
+@app.route('/support')
+def support():
+	status = handle_auth()
+	if status['access_granted'] == False:
+		return status['action_taken']
+
+	user_data = get_user_data(status['data'])
+
+	return render_template('support.html',
+			t=randint(1,9999),
+			user_data=user_data)
+
+@app.route('/support/FAQ')
+def support_FAQ():
+	status = handle_auth()
+	if status['access_granted'] == False:
+		return status['action_taken']
+
+	user_data = get_user_data(status['data'])
+
+	return render_template('support_FAQ.html',
+			t=randint(1,9999),
+			user_data=user_data)
+
+@app.route('/support/chat')
+def support_chat():
+	status = handle_auth()
+	if status['access_granted'] == False:
+		return status['action_taken']
+
+	user_data = get_user_data(status['data'])
+
+	return render_template('support_chat.html',
+			t=randint(1,9999),
+			user_data=user_data)
+
+@app.route('/support/helplines')
+def support_helplines():
+	status = handle_auth()
+	if status['access_granted'] == False:
+		return status['action_taken']
+
+	user_data = get_user_data(status['data'])
+
+	return render_template('support_helplines.html',
+			t=randint(1,9999),
+			user_data=user_data)
+
+@app.route('/about')
+def about():
+	status = handle_auth()
+	if status['access_granted'] == False:
+		return status['action_taken']
+
+	user_data = get_user_data(status['data'])
+
+	return render_template('about.html',
+			t=randint(1,9999),
+			user_data=user_data)
+
+@app.route('/about/contactus')
+def about_contactus():
+	status = handle_auth()
+	if status['access_granted'] == False:
+		return status['action_taken']
+
+	user_data = get_user_data(status['data'])
+
+	return render_template('about_contactus.html',
+			t=randint(1,9999),
+			user_data=user_data)
+
+@app.route('/troubleshoot')
+def troubleshoot():
+	status = handle_auth()
+	if status['access_granted'] == False:
+		return status['action_taken']
+
+	user_data = get_user_data(status['data'])
+
+	return render_template('troubleshoot.html',
+			t=randint(1,9999),
+			user_data=user_data)
+
+###################################
+
+###################################
+
+# Endpoints for Admin Section and rerouting
+
+###################################
 
 @app.route('/')
 def home():
@@ -188,14 +284,26 @@ def home():
 
 	user_data = get_user_data(status['data'])
 
-	# if not checkUserExists(user_data['uid']):
-	# 	addNewUser(user_data)
-	# 	print "Added New User!"
-	# 	# return addNewUserWorkflow
+	return render_template('home.html',
+			t=randint(1,9999),
+			user_data=user_data,
+			bedtime="10:00 PM",
+			waketime="07:00 AM")
+
+@app.route('/b')
+def home_t():
+	status = handle_auth()
+	if status['access_granted'] == False:
+		return render_login_page()
+
+	userType = "patient"
+	user_data = get_user_data(status['data'])
 
 	return render_template('home.html',
 			t=randint(1,9999),
-			user_data=user_data)
+			user_data=user_data,
+			bedtime="10:00 PM",
+			waketime="07:00 AM")
 
 @app.route('/admin')
 def admin():
@@ -203,34 +311,20 @@ def admin():
 	if status['access_granted'] == False:
 		return status['action_taken']
 
+	isAdmin = True
+
+	if not isAdmin:
+		return "404"
+
 	user_data = get_user_data(status['data'])
 
 	return render_template('admin.html',
 			t=randint(1,9999),
 			user_data=user_data)
 
-@app.route('/dummy')
-def dummy():
-	status = handle_auth()
-	if status['access_granted'] == False:
-		return status['action_taken']
-
-	user_data = get_user_data(status['data'])
-
-	return render_template('dummy_land2.html',
-			t=randint(1,9999),
-			user_data=user_data)
-
-###################################
-
-
-###################################
-
-# Endpoints for Patient Section
-
-###################################
-
-
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 ###################################
 
@@ -241,7 +335,7 @@ def dummy():
 ###################################
 
 def main():
-    app.run()
+    app.run(port=5000)
 
 if __name__ == '__main__':
     main()

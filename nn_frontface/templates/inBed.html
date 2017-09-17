@@ -1,0 +1,80 @@
+{% extends 'signed_base.html' %}
+{% block content %}
+<style>
+
+body {
+	background-color: #292b2c;
+}
+
+.btn-circle {
+    text-align: center;
+}
+
+.inner {
+  background-color:transparent;
+  width:100px;
+  height:100px;
+  border-radius:50px;
+  box-shadow: 0 0 8px #ea4c89, inset 0 0 8px #ea4c89;
+  -webkit-animation: pulse 2s linear 1s infinite;
+  font-family:sans-serif;
+  font-weight:100;
+  font-size:24px;
+  color: #ea4c89;
+  text-shadow: 0 0 4px #ea4c89;
+}
+
+</style>
+
+<div class="row h-100 justify-content-center align-items-center">
+	<button type="button" class="btn btn-default inner" id="tap_to_sleep">Tap before <br>going to sleep!</button>
+</div>
+
+{% endblock %}
+
+{% block customJS %}
+
+<script>
+
+$(document).ready(function() {
+	var h = $('.content').css("height");
+	var w = $('.content').css("width");
+
+	h = Number(h.slice(0, h.indexOf('p')));
+	w = Number(w.slice(0, w.indexOf('p')));
+
+	var minval = Math.min(h,w);
+
+	console.log(minval);
+
+	if (minval > 420) {
+		minval -= 250;
+		$('#tap_to_sleep').css('width',String(minval)+'px');
+		$('#tap_to_sleep').css('height',String(minval)+'px');
+		$('#tap_to_sleep').css('border-radius', String(minval/2)+'px');
+	}
+
+	else {
+		minval -= 100;
+		$('#tap_to_sleep').css('width',String(minval)+'px');
+		$('#tap_to_sleep').css('height',String(minval)+'px');
+		$('#tap_to_sleep').css('border-radius', String(minval/2)+'px');
+	}
+
+});
+
+function toggleSleep() {
+	console.log();
+	if(!$("#cmn-toggle-4").is(':checked')) {
+		// Is Awake
+		$('#sleep').html('I am up');
+		$('#bedtime').css("text-decoration", "none");
+	} else {
+		$('#sleep').html('Going to sleep');
+		$('#bedtime').css("text-decoration", "line-through");
+	}
+}
+
+</script>
+
+{% endblock %}

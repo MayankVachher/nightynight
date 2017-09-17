@@ -1,0 +1,7 @@
+#user_nav_photo {
+	border-radius: 50%;
+	height: 2.25rem;
+	width: 2.25rem;
+	object-fit: cover;
+	max-height: none;
+}
