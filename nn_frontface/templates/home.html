@@ -1,11 +1,166 @@
 {% extends 'base.html' %}
-
 {% block customCSS %}
 <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style_dummy.css') }}?t={{t}}"> -->
 {% endblock %}
-
 {% block content %}
+<style>
+	.allgray, .allgray a {
+		color: #666;
+	}
+	.allgray a:hover {
+		color: #aaa;
+	}
+.cmn-toggle {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
+}
+.cmn-toggle + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+input.cmn-toggle-round-flat + label {
+  padding: 2px;
+  width: 120px;
+  height: 60px;
+  background-color: #fa3;
+  -webkit-border-radius: 60px;
+  -moz-border-radius: 60px;
+  -ms-border-radius: 60px;
+  -o-border-radius: 60px;
+  border-radius: 60px;
+  -webkit-transition: background 0.4s;
+  -moz-transition: background 0.4s;
+  -o-transition: background 0.4s;
+  transition: background 0.4s;
+}
+input.cmn-toggle-round-flat + label:before, input.cmn-toggle-round-flat + label:after {
+  display: block;
+  position: absolute;
+  content: "";
+}
+input.cmn-toggle-round-flat + label:before {
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  right: 2px;
+  background-color: #000;
+  -webkit-border-radius: 60px;
+  -moz-border-radius: 60px;
+  -ms-border-radius: 60px;
+  -o-border-radius: 60px;
+  border-radius: 60px;
+  -webkit-transition: background 0.4s;
+  -moz-transition: background 0.4s;
+  -o-transition: background 0.4s;
+  transition: background 0.4s;
+}
+input.cmn-toggle-round-flat + label:after {
+  top: 4px;
+  left: 4px;
+  bottom: 4px;
+  width: 52px;
+  background-color: #fa3;
+  -webkit-border-radius: 52px;
+  -moz-border-radius: 52px;
+  -ms-border-radius: 52px;
+  -o-border-radius: 52px;
+  border-radius: 52px;
+  -webkit-transition: margin 0.4s, background 0.4s;
+  -moz-transition: margin 0.4s, background 0.4s;
+  -o-transition: margin 0.4s, background 0.4s;
+  transition: margin 0.4s, background 0.4s;
+}
+input.cmn-toggle-round-flat:checked + label {
+  background-color: #029;
+}
+input.cmn-toggle-round-flat:checked + label:after {
+  margin-left: 60px;
+  background-color: #029;
+}
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
 
-<h1 class="title">Hello!</h1>
+.bg-primary { 
+	background-color: #f0f;
+}
+
+
+
+</style>
+
+<!-- [TOP ROW] 2 COLUMNS ALIGNED RIGHT -->
+<div class="row bg-inverse text-white">
+	<div class="col-5" style="padding-left:20px;padding-top:5px">
+		<span class="tracker">Device status: recording</span>
+	</div>
+	<div class="col-7" style="padding-right:20px;padding-top:5px">
+		<figure class="figure w-100">
+		  <img src="{{ user_data.picture }}" id="user_nav_photo" class="figure-img img-fluid rounded" style="float:right">
+		  <figcaption class="figure-caption text-right" style="font-size:0.8em">
+			  Logged in as {{ user_data.name }}
+			  <br>
+			  <span class="allgray">
+				(not you? <a href="{{ url_for('logout') }}"><u>log out</u></a>)
+			  </span>
+			  <!--
+			  <br>
+			  Last log in: Thurs 24/10/17 at 8:45 PM --- {{ user_data.last_login }}
+			  -->
+		  </figcaption>
+		</figure>
+	</div>
+</div>
+<!-- END [TOP ROW] -->
+
+
+<!-- [MAIN CONTENT] ONE BIG COLUMN -->
+<div class="row bg-inverse text-white">
+<div class="col-12">
+<h2 class="text-center">Current Mode:</h2>
+
+<h3 id="sleep" class="text-center">I am up</h3>
+
+<div class="switch" >
+<p align="center">
+  <input id="cmn-toggle-4" onclick="toggleSleep()" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+  <label for="cmn-toggle-4"></label>
+</p>
+</div>
+</div>
+</div>
+<div class="row bg-inverse text-white">
+<div class="col-8" style="padding-left:25px">
+<h5>Tonight's Sleep Plan</h4>
+	<ul>
+		<li>Go to bed by 10:00 pm</li>
+		<li>Wake up at 7:00 am</li>
+	</ul>
+</div>
+</div>
+
+<script>
+
+function toggleSleep() { 
+	if(document.getElementById('sleep').innerHTML == 'Going to sleep') {
+		document.getElementById('sleep').innerHTML = 'I am up';
+	} else {
+		document.getElementById('sleep').innerHTML = 'Going to sleep';
+	}
+}
+
+</script>
+
+
+<p></p>
+<!-- END [MAIN CONTENT] -->
 
 {% endblock %}
