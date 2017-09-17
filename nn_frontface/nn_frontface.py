@@ -249,11 +249,12 @@ def support_helplines():
 def about():
 	status = handle_auth()
 	if status['access_granted'] == False:
-		return status['action_taken']
+		return render_template('unsigned_how_it_works.html',
+				t=randint(1,9999))
 
 	user_data = get_user_data(status['data'])
 
-	return render_template('about.html',
+	return render_template('signed_how_it_works.html',
 			t=randint(1,9999),
 			user_data=user_data)
 

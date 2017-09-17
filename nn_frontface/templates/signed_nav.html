@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">nite2nite</a>
+  <a class="navbar-brand" href="{{ url_for('home') }}">nite2nite</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 	<span class="navbar-toggler-icon"></span>
   </button>
@@ -25,10 +25,10 @@
 				About
 			</a>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown_about">
-				<a class="dropdown-item" href="signed_how_it_works.html">How it Works</a>
+				<a class="dropdown-item" href="{{ url_for('about') }}">How it Works</a>
 			</div>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown_about">
-				<a class="dropdown-item" href="contact.html">Contact Us</a>
+				<a class="dropdown-item" href="{{ url_for('about_contactus') }}">Contact Us</a>
 			</div>
 		</li>
 		<li class="nav-item dropdown">

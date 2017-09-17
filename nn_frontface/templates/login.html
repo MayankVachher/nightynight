@@ -17,21 +17,8 @@ body {
 		<h2 class="text-white">Welcome to <br><b>nite2nite</b></br> Sleep Tracker</h2>
 		<p style="margin-top:10px">A sleep health tracker able to interface with medical diagnostic equipment provided by physicians, interactively making real changes in patient's quality of sleep.</p>
 		<a class="btn btn-primary" href="{{ url_for('login_google') }}" style="margin-top:15px">Log In</a>
-		<p style="margin-top:20px">New user? <a href="templates/unsigned_how_it_works.html">learn more</a></p>
+		<p style="margin-top:20px">New user? <a href="{{ url_for('about') }}">Learn More</a></p>
 	</div>
 </div>
 
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
